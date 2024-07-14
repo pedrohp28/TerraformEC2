@@ -18,8 +18,11 @@ resource "aws_instance" "app_server" {
   ami           = "ami-03d5c68bab01f3496"
   instance_type = "t2.micro"
   key_name = "iac-alura"
+  //user_data = "${file("inits.sh")}"
+  user_data_replace_on_change = true
+  vpc_security_group_ids = ["sg-07402920b456a4665"]
 
   tags = {
-    Name = "Primeira instância"
+    Name = "Teste AWS"
   }
 }
